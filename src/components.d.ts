@@ -10,53 +10,51 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface MyComponent {
-    /**
-    * The first name
-    */
-    'first': string;
-    /**
-    * The last name
-    */
-    'last': string;
-    /**
-    * The middle name
-    */
-    'middle': string;
+  interface GrmButton {
+    'type': string;
   }
+  interface GrmInput {}
+  interface GrmRadio {}
 }
 
 declare global {
 
 
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
+  interface HTMLGrmButtonElement extends Components.GrmButton, HTMLStencilElement {}
+  var HTMLGrmButtonElement: {
+    prototype: HTMLGrmButtonElement;
+    new (): HTMLGrmButtonElement;
+  };
+
+  interface HTMLGrmInputElement extends Components.GrmInput, HTMLStencilElement {}
+  var HTMLGrmInputElement: {
+    prototype: HTMLGrmInputElement;
+    new (): HTMLGrmInputElement;
+  };
+
+  interface HTMLGrmRadioElement extends Components.GrmRadio, HTMLStencilElement {}
+  var HTMLGrmRadioElement: {
+    prototype: HTMLGrmRadioElement;
+    new (): HTMLGrmRadioElement;
   };
   interface HTMLElementTagNameMap {
-    'my-component': HTMLMyComponentElement;
+    'grm-button': HTMLGrmButtonElement;
+    'grm-input': HTMLGrmInputElement;
+    'grm-radio': HTMLGrmRadioElement;
   }
 }
 
 declare namespace LocalJSX {
-  interface MyComponent {
-    /**
-    * The first name
-    */
-    'first'?: string;
-    /**
-    * The last name
-    */
-    'last'?: string;
-    /**
-    * The middle name
-    */
-    'middle'?: string;
+  interface GrmButton {
+    'type'?: string;
   }
+  interface GrmInput {}
+  interface GrmRadio {}
 
   interface IntrinsicElements {
-    'my-component': MyComponent;
+    'grm-button': GrmButton;
+    'grm-input': GrmInput;
+    'grm-radio': GrmRadio;
   }
 }
 
@@ -66,7 +64,9 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
-      'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+      'grm-button': LocalJSX.GrmButton & JSXBase.HTMLAttributes<HTMLGrmButtonElement>;
+      'grm-input': LocalJSX.GrmInput & JSXBase.HTMLAttributes<HTMLGrmInputElement>;
+      'grm-radio': LocalJSX.GrmRadio & JSXBase.HTMLAttributes<HTMLGrmRadioElement>;
     }
   }
 }
