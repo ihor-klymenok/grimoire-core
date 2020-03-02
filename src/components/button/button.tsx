@@ -1,9 +1,5 @@
-import { Component, h, Prop } from "@stencil/core";
-
-enum ButtonType {
-  primary = 'primary',
-  accent = 'accent'
-}
+import { Component, h, Prop, Host } from "@stencil/core";
+import { Color } from '../../interface';
 
 @Component({
   tag: 'grm-button',
@@ -11,12 +7,25 @@ enum ButtonType {
   styleUrl: './button.css'
 })
 export class Button {
-  @Prop() type: ButtonType = ButtonType.primary;
+  @Prop() color?: Color = 'primary';
   @Prop() disabled?: boolean;
 
   render() {
-    return <button
-      disabled={this.disabled}
-    >Button</button>
+    return (
+      <Host
+        class={{
+          'button--color-primary': this.color === 'primary',
+          'button--color-secondary': this.color === 'secondary',
+          'button--disabled': this.disabled,
+        }}
+      >
+        <button
+          class="button"
+          disabled={this.disabled}
+        >
+          Button
+        </button>
+      </Host>
+    )
   }
 }
