@@ -7,12 +7,14 @@
 
 
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
-
+import {
+  Color,
+} from './interface';
 
 export namespace Components {
   interface GrmButton {
+    'color'?: Color;
     'disabled'?: boolean;
-    'type': ButtonType;
   }
   interface GrmCheckbox {}
   interface GrmInput {}
@@ -87,8 +89,8 @@ declare global {
 
 declare namespace LocalJSX {
   interface GrmButton {
+    'color'?: Color;
     'disabled'?: boolean;
-    'type'?: ButtonType;
   }
   interface GrmCheckbox {}
   interface GrmInput {}
