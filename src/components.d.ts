@@ -16,13 +16,13 @@ export namespace Components {
     'color'?: Color;
     'disabled'?: boolean;
   }
-  interface GrmCheckbox {}
-  interface GrmInput {}
-  interface GrmRadio {}
-  interface GrmSelect {}
-  interface GrmSlider {}
-  interface GrmSwitch {}
-  interface GrmTooltip {}
+  interface GrmInput {
+    'disabled'?: boolean;
+    'name'?: string;
+    'placeholder'?: string;
+    'type'?: string;
+    'value'?: string;
+  }
 }
 
 declare global {
@@ -34,56 +34,14 @@ declare global {
     new (): HTMLGrmButtonElement;
   };
 
-  interface HTMLGrmCheckboxElement extends Components.GrmCheckbox, HTMLStencilElement {}
-  var HTMLGrmCheckboxElement: {
-    prototype: HTMLGrmCheckboxElement;
-    new (): HTMLGrmCheckboxElement;
-  };
-
   interface HTMLGrmInputElement extends Components.GrmInput, HTMLStencilElement {}
   var HTMLGrmInputElement: {
     prototype: HTMLGrmInputElement;
     new (): HTMLGrmInputElement;
   };
-
-  interface HTMLGrmRadioElement extends Components.GrmRadio, HTMLStencilElement {}
-  var HTMLGrmRadioElement: {
-    prototype: HTMLGrmRadioElement;
-    new (): HTMLGrmRadioElement;
-  };
-
-  interface HTMLGrmSelectElement extends Components.GrmSelect, HTMLStencilElement {}
-  var HTMLGrmSelectElement: {
-    prototype: HTMLGrmSelectElement;
-    new (): HTMLGrmSelectElement;
-  };
-
-  interface HTMLGrmSliderElement extends Components.GrmSlider, HTMLStencilElement {}
-  var HTMLGrmSliderElement: {
-    prototype: HTMLGrmSliderElement;
-    new (): HTMLGrmSliderElement;
-  };
-
-  interface HTMLGrmSwitchElement extends Components.GrmSwitch, HTMLStencilElement {}
-  var HTMLGrmSwitchElement: {
-    prototype: HTMLGrmSwitchElement;
-    new (): HTMLGrmSwitchElement;
-  };
-
-  interface HTMLGrmTooltipElement extends Components.GrmTooltip, HTMLStencilElement {}
-  var HTMLGrmTooltipElement: {
-    prototype: HTMLGrmTooltipElement;
-    new (): HTMLGrmTooltipElement;
-  };
   interface HTMLElementTagNameMap {
     'grm-button': HTMLGrmButtonElement;
-    'grm-checkbox': HTMLGrmCheckboxElement;
     'grm-input': HTMLGrmInputElement;
-    'grm-radio': HTMLGrmRadioElement;
-    'grm-select': HTMLGrmSelectElement;
-    'grm-slider': HTMLGrmSliderElement;
-    'grm-switch': HTMLGrmSwitchElement;
-    'grm-tooltip': HTMLGrmTooltipElement;
   }
 }
 
@@ -92,23 +50,18 @@ declare namespace LocalJSX {
     'color'?: Color;
     'disabled'?: boolean;
   }
-  interface GrmCheckbox {}
-  interface GrmInput {}
-  interface GrmRadio {}
-  interface GrmSelect {}
-  interface GrmSlider {}
-  interface GrmSwitch {}
-  interface GrmTooltip {}
+  interface GrmInput {
+    'disabled'?: boolean;
+    'name'?: string;
+    'onGrmInput'?: (event: CustomEvent<KeyboardEvent>) => void;
+    'placeholder'?: string;
+    'type'?: string;
+    'value'?: string;
+  }
 
   interface IntrinsicElements {
     'grm-button': GrmButton;
-    'grm-checkbox': GrmCheckbox;
     'grm-input': GrmInput;
-    'grm-radio': GrmRadio;
-    'grm-select': GrmSelect;
-    'grm-slider': GrmSlider;
-    'grm-switch': GrmSwitch;
-    'grm-tooltip': GrmTooltip;
   }
 }
 
@@ -119,13 +72,7 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'grm-button': LocalJSX.GrmButton & JSXBase.HTMLAttributes<HTMLGrmButtonElement>;
-      'grm-checkbox': LocalJSX.GrmCheckbox & JSXBase.HTMLAttributes<HTMLGrmCheckboxElement>;
       'grm-input': LocalJSX.GrmInput & JSXBase.HTMLAttributes<HTMLGrmInputElement>;
-      'grm-radio': LocalJSX.GrmRadio & JSXBase.HTMLAttributes<HTMLGrmRadioElement>;
-      'grm-select': LocalJSX.GrmSelect & JSXBase.HTMLAttributes<HTMLGrmSelectElement>;
-      'grm-slider': LocalJSX.GrmSlider & JSXBase.HTMLAttributes<HTMLGrmSliderElement>;
-      'grm-switch': LocalJSX.GrmSwitch & JSXBase.HTMLAttributes<HTMLGrmSwitchElement>;
-      'grm-tooltip': LocalJSX.GrmTooltip & JSXBase.HTMLAttributes<HTMLGrmTooltipElement>;
     }
   }
 }
