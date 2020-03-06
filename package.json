@@ -1,7 +1,12 @@
 {
-  "name": "grimoire",
-  "version": "0.0.1",
-  "description": "Stencil Component Starter",
+  "name": "@grimoire/core",
+  "version": "0.2.1",
+  "author": "Ihor Klymenok",
+  "email": "ihor.klymenok@outlook.com",
+  "description": "Grimoire UI kit",
+  "homepage": "https://github.com/ihor-klymenok/grimoire-core",
+  "bugs": "https://github.com/ihor-klymenok/grimoire-core/issues",
+
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "es2015": "dist/esm/index.mjs",
