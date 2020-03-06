@@ -1,4 +1,4 @@
-import { Component, h, State, Element, Prop, Event, EventEmitter } from "@stencil/core";
+import { Component, h, State, Element, Prop } from "@stencil/core";
 
 @Component({
   tag: 'grm-input',
@@ -6,8 +6,6 @@ import { Component, h, State, Element, Prop, Event, EventEmitter } from "@stenci
   scoped: true,
 })
 export class Input {
-  // private nativeInput?: HTMLInputElement;
-
   @State() hasFocus = false;
 
   @Element() el!: HTMLElement;
@@ -16,32 +14,24 @@ export class Input {
 
   @Prop() name?: string;
 
+  @Prop() autocomplete?: string = 'off';
+
   @Prop() disabled?: boolean;
 
   @Prop() placeholder?: string;
 
   @Prop() value?: string;
 
-  @Event() grmInput!: EventEmitter<KeyboardEvent>
-
-  private onInput = (ev: Event) => {
-    const input = ev.target as HTMLInputElement | null;
-    if (input) {
-      this.value = input.value || '';
-    }
-    this.grmInput.emit(ev as KeyboardEvent);
-  }
-
   render() {
     return (
       <input
         class="input-native"
-        placeholder={this.placeholder}
-        type={this.type}
         name={this.name}
+        type={this.type}
+        autoComplete={this.autocomplete}
+        placeholder={this.placeholder}
         disabled={this.disabled}
         value={this.value}
-        onInput={this.onInput}
       />
     );
   }

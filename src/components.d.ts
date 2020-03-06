@@ -17,6 +17,7 @@ export namespace Components {
     'disabled'?: boolean;
   }
   interface GrmInput {
+    'autocomplete'?: string;
     'disabled'?: boolean;
     'name'?: string;
     'placeholder'?: string;
@@ -51,9 +52,9 @@ declare namespace LocalJSX {
     'disabled'?: boolean;
   }
   interface GrmInput {
+    'autocomplete'?: string;
     'disabled'?: boolean;
     'name'?: string;
-    'onGrmInput'?: (event: CustomEvent<KeyboardEvent>) => void;
     'placeholder'?: string;
     'type'?: string;
     'value'?: string;
