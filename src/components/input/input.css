@@ -1,0 +1,19 @@
+:host {
+  display: inline;
+}
+
+.input-native {
+  padding: 1em;
+  border: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 1rem;
+  box-sizing: border-box;
+  font-weight: lighter;
+}
+.input-native:focus {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+.input-native::placeholder {
+  font-weight: bold;
+  opacity: 0.4;
+}
