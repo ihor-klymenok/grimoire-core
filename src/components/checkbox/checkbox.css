@@ -1,0 +1,57 @@
+@import '../../styles/core.css';
+
+:host {
+  --checkmark-color: #FFF;
+  --checkmark-width: 3px;
+  --border-radius: 5px;
+  --border-width: 2px;
+  --border-style: solid;
+  --border-color: rgba(0,0,0,0.5);
+  --background-color: #FFF;
+  --cursor: pointer;
+}
+
+:host(.is-checked) {
+  --background-color: var(--primary-color);
+  --border-width: 0;
+}
+
+:host(.is-disabled) {
+  --border-color: rgba(0,0,0,0.2);
+  --cursor: not-allowed;
+}
+
+.checkbox {
+  display: inline-block;
+  cursor: var(--cursor);
+}
+
+.checkbox-label {
+  cursor: var(--cursor);
+  line-height: 1rem;
+  vertical-align: middle;
+}
+
+.checkbox-icon {
+  display: inline-block;
+  vertical-align: middle;
+
+  height: 1rem;
+  width: 1rem;
+  margin-right: 6px;
+  
+  border-width: var(--border-width);
+  border-style: var(--border-style);
+  border-color: var(--border-color);
+
+  background: var(--background-color);
+
+  box-sizing: border-box;
+}
+
+.checkbox-icon path {
+  fill: none;
+  stroke: var(--checkmark-color);
+  stroke-width: var(--checkmark-width);
+  stroke-dasharray: 30;
+}

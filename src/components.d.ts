@@ -10,11 +10,23 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
   Color,
 } from './interface';
+import {
+  CheckboxChangeEventDetail,
+} from './components/checkbox/checkbox-interface';
 
 export namespace Components {
   interface GrmButton {
     'color'?: Color;
     'disabled'?: boolean;
+  }
+  interface GrmCheckbox {
+    'checked': boolean;
+    'disabled': boolean;
+    'label'?: string;
+    /**
+    * The name of the control, which is submitted with the form data
+    */
+    'name'?: string;
   }
   interface GrmInput {
     'autocomplete'?: string;
@@ -35,6 +47,12 @@ declare global {
     new (): HTMLGrmButtonElement;
   };
 
+  interface HTMLGrmCheckboxElement extends Components.GrmCheckbox, HTMLStencilElement {}
+  var HTMLGrmCheckboxElement: {
+    prototype: HTMLGrmCheckboxElement;
+    new (): HTMLGrmCheckboxElement;
+  };
+
   interface HTMLGrmInputElement extends Components.GrmInput, HTMLStencilElement {}
   var HTMLGrmInputElement: {
     prototype: HTMLGrmInputElement;
@@ -42,6 +60,7 @@ declare global {
   };
   interface HTMLElementTagNameMap {
     'grm-button': HTMLGrmButtonElement;
+    'grm-checkbox': HTMLGrmCheckboxElement;
     'grm-input': HTMLGrmInputElement;
   }
 }
@@ -50,6 +69,24 @@ declare namespace LocalJSX {
   interface GrmButton {
     'color'?: Color;
     'disabled'?: boolean;
+  }
+  interface GrmCheckbox {
+    'checked'?: boolean;
+    'disabled'?: boolean;
+    'label'?: string;
+    /**
+    * The name of the control, which is submitted with the form data
+    */
+    'name'?: string;
+    /**
+    * Emitted when the checkbox loses focus.
+    */
+    'onGrmBlur'?: (event: CustomEvent<void>) => void;
+    'onGrmChange'?: (event: CustomEvent<CheckboxChangeEventDetail>) => void;
+    /**
+    * Emitted when the checkbox has focus.
+    */
+    'onGrmFocus'?: (event: CustomEvent<void>) => void;
   }
   interface GrmInput {
     'autocomplete'?: string;
@@ -62,6 +99,7 @@ declare namespace LocalJSX {
 
   interface IntrinsicElements {
     'grm-button': GrmButton;
+    'grm-checkbox': GrmCheckbox;
     'grm-input': GrmInput;
   }
 }
@@ -73,6 +111,7 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'grm-button': LocalJSX.GrmButton & JSXBase.HTMLAttributes<HTMLGrmButtonElement>;
+      'grm-checkbox': LocalJSX.GrmCheckbox & JSXBase.HTMLAttributes<HTMLGrmCheckboxElement>;
       'grm-input': LocalJSX.GrmInput & JSXBase.HTMLAttributes<HTMLGrmInputElement>;
     }
   }
