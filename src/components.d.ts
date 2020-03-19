@@ -27,6 +27,7 @@ export namespace Components {
     * The name of the control, which is submitted with the form data
     */
     'name'?: string;
+    'value': string;
   }
   interface GrmInput {
     'autocomplete'?: string;
@@ -87,6 +88,7 @@ declare namespace LocalJSX {
     * Emitted when the checkbox has focus.
     */
     'onGrmFocus'?: (event: CustomEvent<void>) => void;
+    'value'?: string;
   }
   interface GrmInput {
     'autocomplete'?: string;

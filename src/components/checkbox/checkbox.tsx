@@ -1,5 +1,6 @@
 import { Component, Prop, Event, EventEmitter, Watch, h, Host, Element } from '@stencil/core';
 import { CheckboxChangeEventDetail } from './checkbox-interface';
+import { renderHiddenInput } from '../../utils/utils';
 
 @Component({
   tag: 'grm-checkbox',
@@ -20,6 +21,8 @@ export class Checkbox {
 
   @Prop({ mutable: true }) checked = false;
 
+  @Prop() value = 'on';
+
   @Prop() disabled = false;
 
   @Event() grmChange!: EventEmitter<CheckboxChangeEventDetail>;
@@ -38,6 +41,7 @@ export class Checkbox {
   checkedChanged(isChecked: boolean) {
     this.grmChange.emit({
       checked: isChecked,
+      value: this.value,
     });
   }
 
@@ -56,15 +60,19 @@ export class Checkbox {
     this.checked = !this.checked;
   }
 
-  private onFocus = () => {
+  private onFocus = (e) => {
+    console.log('Focus', e)
     this.grmFocus.emit();
   }
 
-  private onBlur = () => {
+  private onBlur = (e) => {
+    console.log('BLur', e)
     this.grmBlur.emit();
   }
 
   render() {
+    renderHiddenInput(true, this.el, this.name, (this.checked ? this.value : ''), this.disabled);
+
     return (
       <Host
         onClick={this.onClick}
@@ -76,7 +84,11 @@ export class Checkbox {
           'is-disabled': this.disabled,
         }}
       >
-        <div class="checkbox">
+        <div class="checkbox"
+          tabindex="0"
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
+        >
           <svg class="checkbox-icon" viewBox="0 0 24 24">
             <path d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
           </svg>
@@ -87,16 +99,6 @@ export class Checkbox {
           >
             {this.label}
           </label>
-
-          <input
-            class="checkbox-native"
-            type="hidden"
-            name={this.name}
-            disabled={this.disabled}
-            checked={this.checked}
-            onFocus={this.onFocus}
-            onBlur={this.onBlur}
-          />
         </div>
       </Host>
     );
