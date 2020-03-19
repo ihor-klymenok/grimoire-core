@@ -1,12 +1,11 @@
 {
   "name": "@grimoire/core",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "author": "Ihor Klymenok",
   "email": "ihor.klymenok@outlook.com",
   "description": "Grimoire UI kit",
   "homepage": "https://github.com/ihor-klymenok/grimoire-core",
   "bugs": "https://github.com/ihor-klymenok/grimoire-core/issues",
-
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "es2015": "dist/esm/index.mjs",
@@ -22,12 +21,19 @@
   "scripts": {
     "build": "stencil build --docs",
     "start": "stencil build --dev --watch --serve",
+    "test.e2e": "stencil test --e2e",
+    "test.unit": "stencil test --spec",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate"
   },
   "devDependencies": {
-    "@stencil/core": "^1.8.11"
+    "@stencil/core": "^1.8.11",
+    "@types/jest": "24.0.25",
+    "@types/puppeteer": "1.19.0",
+    "jest": "24.9.0",
+    "jest-cli": "24.9.0",
+    "puppeteer": "1.19.0"
   },
   "license": "MIT"
 }
